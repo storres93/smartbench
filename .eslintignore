@@ -1,0 +1,14 @@
+.idea
+*.iml
+*.log
+
+node_modules
+dist
+coverage
+test/visual/*.new.png
+test/visual/*.diff.png
+
+.sass-cache
+mocha.json
+
+.DS_Store

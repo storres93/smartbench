@@ -1,0 +1,50 @@
+{
+	"name": "smartbench",
+	"version": "0.1.0",
+	"description": "SmartBench, what are you going to do today?",
+	"author": "Sebastian Torres",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/storres93/smartbench"
+	},
+	"maintainers": [
+		"Sebastian Torres <seba.j.torres@gmail.com>"
+	],
+	"scripts": {
+		"start": "nodemon server",
+		"everything" : "npm run build && npm start",
+		"build": "npm run clean && mkdir dist && browserify src/main.js -s feature -o dist/main.js -d && node-sass src/sass/main.scss dist/main.css && exorcist dist/main.js.map < dist/main.js > /dev/null",
+		"watch": "npm run clean && mkdir dist && watchify src/main.js -s feature -o dist/main.js -d",
+		"clean": "rm -rf dist",
+		"lint": "eslint src",
+		"lint-fix": "eslint --fix src"
+	},
+	"pre-commit": {
+		"run": "lint"
+	},
+	"browserify": {
+		"transform": [
+			"stringify"
+		]
+	},
+	"browser": {
+		"jquery": "jquery/jquery"
+	},
+	"dependencies": {
+		"angular": "1.5.8",
+		"jquery": "3.1.1",
+		"stringify": "^5.1.0",
+		"underscore": "^1.7.3",
+		"node-sass": "3.3.3"
+	},
+	"devDependencies": {
+		"eslint": "^2.9.0",
+		"browserify": "^13.0.0",
+		"eslint": "^2.9.0",
+		"exorcist": "^0.4.0",
+		"express": "^4.13.4",
+		"nodemon": "^1.9.2",
+		"pre-commit": "^1.1.2",
+		"watchify": "^3.7.0"
+	}
+}
